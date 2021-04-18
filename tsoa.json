@@ -1,0 +1,24 @@
+{
+  "entryFile": "src/app.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": [
+    "src/**/*Controller.ts"
+  ],
+  "spec": {
+    "outputDirectory": "static",
+    "specVersion": 3,
+    "middleware": "koa",
+    "securityDefinitions": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "x-bundle-access-token",
+        "in": "header"
+      }
+    }
+  },
+  "routes": {
+    "routesDir": "build",
+    "middleware": "koa",
+    "authenticationModule": "src/auth/authentication.ts"
+  }
+}

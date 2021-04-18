@@ -1,0 +1,170 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"UserAddress": {
+				"properties": {
+					"street": {
+						"type": "string"
+					},
+					"suite": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"zipcode": {
+						"type": "string"
+					},
+					"geo": {
+						"properties": {
+							"lng": {
+								"type": "string"
+							},
+							"lat": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"lng",
+							"lat"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"street",
+					"suite",
+					"city",
+					"zipcode",
+					"geo"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Company": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"catchPhrase": {
+						"type": "string"
+					},
+					"bs": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"catchPhrase",
+					"bs"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"User": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"username": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"address": {
+						"$ref": "#/components/schemas/UserAddress"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"website": {
+						"type": "string"
+					},
+					"company": {
+						"$ref": "#/components/schemas/Company"
+					}
+				},
+				"required": [
+					"id",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"api_key": {
+				"type": "apiKey",
+				"name": "x-bundle-access-token",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "koa-users",
+		"version": "1.0.0",
+		"description": "koa users example app",
+		"license": {
+			"name": "MIT"
+		},
+		"contact": {
+			"name": "Julian Rofrano"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/users/{userId}": {
+			"get": {
+				"operationId": "GetUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/User"
+										},
+										{}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
