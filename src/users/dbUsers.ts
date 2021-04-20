@@ -1,3 +1,11 @@
+import { User } from './user';
+import { getDistanceFromLatLonInKm } from './utils';
+
+interface Coordinates {
+  lat: string;
+  lng: string;
+}
+
 export const users = [
   {
     id: 1,
@@ -230,3 +238,84 @@ export const users = [
     },
   },
 ];
+
+/**
+ * @param coords1 - Coordinates of first point
+ * @param coords2 - Coordinates of second point
+ * @param radius - Radius in Km
+ * @returns `true` if the distance between `coords1` and `coords2` is inside the provided
+ * `radius` in km or the default radius of 10km
+ *
+ */
+export const areCoordsInRadius = (
+  coords1: Coordinates,
+  coords2: Coordinates,
+  radius: number = 10
+): Boolean => {
+  const { lat: lat1, lng: lng1 } = coords1;
+  const { lat: lat2, lng: lng2 } = coords2;
+  const parsedLat = Number.parseFloat(lat1);
+  const parsedLng = Number.parseFloat(lng1);
+  const parsedUserLat = Number.parseFloat(lat2);
+  const parsedUserLng = Number.parseFloat(lng2);
+  const distance = getDistanceFromLatLonInKm(
+    parsedLat,
+    parsedLng,
+    parsedUserLat,
+    parsedUserLng
+  );
+  if (distance <= radius) {
+    return true;
+  } else return false;
+};
+
+/**
+ * @param userEmail - Coordinates of first point
+ * @param emailContainsParam - Coordinates of second point
+ * @returns `true` if the provided `emailContainsParam` is inside the `userMail`
+ *
+ */
+export const isParamOnEmail = (
+  userEmail: string,
+  emailContainsParam: string
+): Boolean => {
+  const emailContainesLower = emailContainsParam?.toLowerCase();
+  if (userEmail.includes(emailContainesLower)) {
+    return true;
+  }
+  return false;
+};
+
+export const queryUsers = (
+  coordinate: string[] | undefined,
+  radius: number | undefined,
+  emailContains: string | undefined
+) => {
+  let filteredUsers: Set<User> = new Set();
+
+  users.forEach((user) => {
+    const {
+      address: {
+        geo: { lat: userLat, lng: userLng },
+      },
+      email,
+    } = user;
+
+    if (coordinate && coordinate?.length > 0) {
+      const [lat, lng] = coordinate;
+
+      if (
+        areCoordsInRadius({ lat, lng }, { lat: userLat, lng: userLng }, radius)
+      ) {
+        filteredUsers.add(user);
+      }
+    }
+
+    if (emailContains) {
+      if (isParamOnEmail(email.toLowerCase(), emailContains)) {
+        filteredUsers.add(user);
+      }
+    }
+  });
+  return Array.from(filteredUsers);
+};

@@ -7,7 +7,7 @@ export const getDistanceFromLatLonInKm = (
   lon1: number,
   lat2: number,
   lon2: number
-) => {
+): number => {
   let deltaLat = degToRad(lat2 - lat1);
   let deltaLon = degToRad(lon2 - lon1);
   let a =
@@ -20,9 +20,9 @@ export const getDistanceFromLatLonInKm = (
   return dinstanceInKm;
 };
 
-export const degToRad = (deg: number) => deg * (Math.PI / 180);
+export const degToRad = (deg: number): number => deg * (Math.PI / 180);
 
-export const transformUser = (user: any, fields: string[] = []) => {
+export const transformUser = (user: any, fields: string[] = []): User => {
   if (!fields.length) {
     return user;
   }

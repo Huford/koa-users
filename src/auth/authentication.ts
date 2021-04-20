@@ -14,7 +14,7 @@ export const koaAuthentication = (
     if (token === 'token') {
       return Promise.resolve({
         id: 1,
-        name: 'Ironman',
+        name: 'Bundle User',
       });
     } else {
       return Promise.reject({});

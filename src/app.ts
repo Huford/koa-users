@@ -8,8 +8,6 @@ import * as path from 'path';
 const Router = require('@koa/router');
 const koaStatic = require('koa-static');
 
-const port = process.env.PORT || 3000;
-
 const app = new koa();
 
 app.use(cors());
@@ -47,7 +45,4 @@ app.use(router.allowedMethods());
 const SWAGGER_DIR_TO_SERVE = path.join(__dirname, '..', 'static');
 app.use(koaStatic(SWAGGER_DIR_TO_SERVE));
 
-app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
-  console.log(`See API docs at: http://localhost:${port}/apidocs`);
-});
+export default app;

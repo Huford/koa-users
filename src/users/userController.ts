@@ -7,7 +7,7 @@ export class UsersController extends Controller {
   @Get('{userId}')
   @Security('api_key')
   public async getUser(@Path() userId: number): Promise<User | void> {
-    return new UsersService().get(userId);
+    return await new UsersService().getUserById(userId);
   }
 
   @Get()
@@ -18,7 +18,7 @@ export class UsersController extends Controller {
     @Query() radius?: number,
     @Query() fields?: Array<string>
   ): Promise<User | void> {
-    return new UsersService().getUsers({
+    return await new UsersService().getUsers({
       emailContains,
       coordinate,
       fields,

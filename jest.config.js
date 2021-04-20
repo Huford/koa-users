@@ -1,4 +1,5 @@
 module.exports = {
-  collectCoverage: true,
+  preset: 'ts-jest/presets/js-with-babel',
+  testEnvironment: 'node',
   collectCoverageFrom: ['src/**/*.{,ts}'],
 };
