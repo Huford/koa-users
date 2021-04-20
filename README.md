@@ -12,4 +12,4 @@ Example usage of a simple /users endpoint
 - `cd koa-users`
 - `yarn` installs all the dependencies
 - `yarn dev` starts dev server 🚀
-- - Go to http://localhost:3000/apidocs to see the docs and test the api
+- Go to http://localhost:3000/apidocs to see the docs and test the api
