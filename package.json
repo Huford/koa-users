@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
-    "build": "tsoa spec-and-routes && tsc",
+    "build:spec-and-routes": "tsoa spec-and-routes",
     "test": "PORT=3001 jest --no-cache "
   },
   "dependencies": {
