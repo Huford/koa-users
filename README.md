@@ -9,6 +9,7 @@ Example usage of a simple /users endpoint
 
 ## How to use it
 - Clone this repo `git clone https://github.com/Huford/koa-users.git`
+- `cd koa-users`
 - `yarn`
 - `yarn dev`
 - Go to http://localhost:3000/apidocs to see the docs and test the api
