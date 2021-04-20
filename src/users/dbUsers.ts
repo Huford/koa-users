@@ -286,11 +286,18 @@ export const isParamOnEmail = (
   return false;
 };
 
+/**
+ * @param coordinate - Coordinates of the comparing point
+ * @param radius - Radius in KM to compare user coordinates against coordinate
+ * @param emailContains - text to search for in user email
+ * @returns list of users satisfying the filters
+ *
+ */
 export const queryUsers = (
   coordinate: string[] | undefined,
   radius: number | undefined,
   emailContains: string | undefined
-) => {
+): Array<User> => {
   let filteredUsers: Set<User> = new Set();
 
   users.forEach((user) => {
