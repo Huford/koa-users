@@ -2,7 +2,7 @@ import koa from 'koa';
 import bodyparser from 'koa-bodyparser';
 import loggerKoa from 'koa-logger';
 import cors from 'koa2-cors';
-import { RegisterRoutes } from '../build/routes';
+import { RegisterRoutes } from './routes/routes';
 import { koaSwagger } from 'koa2-swagger-ui';
 import * as path from 'path';
 const Router = require('@koa/router');
