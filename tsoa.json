@@ -17,7 +17,7 @@
     }
   },
   "routes": {
-    "routesDir": "src/routes",
+    "routesDir": "build",
     "middleware": "koa",
     "authenticationModule": "src/auth/authentication.ts"
   }

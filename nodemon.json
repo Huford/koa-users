@@ -3,8 +3,5 @@
   "watch": [
     "src"
   ],
-  "ext": "ts",
-  "ignore": [
-    "routes/*"
-  ]
+  "ext": "ts"
 }
