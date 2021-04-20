@@ -16,12 +16,20 @@ interface Company {
 }
 
 export interface User {
-  id: number;
-  name: string;
+  [key: string]: any;
+  id?: number;
+  name?: string;
   username?: string;
   email?: string;
   address?: UserAddress;
   phone?: string;
   website?: string;
   company?: Company;
+}
+
+export interface UserFilters {
+  emailContains?: string;
+  coordinate?: Array<string>;
+  radius?: number;
+  fields?: Array<string>;
 }

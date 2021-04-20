@@ -94,12 +94,8 @@
 						"$ref": "#/components/schemas/Company"
 					}
 				},
-				"required": [
-					"id",
-					"name"
-				],
 				"type": "object",
-				"additionalProperties": false
+				"additionalProperties": {}
 			}
 		},
 		"securitySchemes": {
@@ -156,6 +152,74 @@
 						"schema": {
 							"format": "double",
 							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/users": {
+			"get": {
+				"operationId": "GetUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"$ref": "#/components/schemas/User"
+										},
+										{}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "emailContains",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "coordinate",
+						"required": false,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					{
+						"in": "query",
+						"name": "radius",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "fields",
+						"required": false,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
 				]

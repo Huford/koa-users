@@ -1,4 +1,4 @@
-import { Controller, Get, Path, Route, Security } from 'tsoa';
+import { Controller, Get, Path, Query, Route, Security } from 'tsoa';
 import { User } from './user';
 import { UsersService } from './usersService';
 
@@ -8,5 +8,21 @@ export class UsersController extends Controller {
   @Security('api_key')
   public async getUser(@Path() userId: number): Promise<User | void> {
     return new UsersService().get(userId);
+  }
+
+  @Get()
+  @Security('api_key')
+  public async getUsers(
+    @Query() emailContains?: string,
+    @Query() coordinate?: Array<string>,
+    @Query() radius?: number,
+    @Query() fields?: Array<string>
+  ): Promise<User | void> {
+    return new UsersService().getUsers({
+      emailContains,
+      coordinate,
+      fields,
+      radius,
+    });
   }
 }
