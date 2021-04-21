@@ -2,7 +2,7 @@
 Example usage of a simple /users endpoint
 
 [![Node.js CI](https://github.com/Huford/koa-users/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Huford/koa-users/actions/workflows/node.js.yml)
-TODO CD
+
 ## Features
 - TypeScript
 - [koa](https://koajs.com/)
