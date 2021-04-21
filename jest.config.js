@@ -3,4 +3,5 @@ module.exports = {
   testEnvironment: 'node',
   collectCoverageFrom: ['src/**/*.{,ts}'],
   coverageReporters: ['json-summary', 'lcov'],
+  coverageDirectory: '.coverage',
 };

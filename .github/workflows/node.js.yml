@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn install --frozen-lockfile
     - run: yarn build:spec-and-routes
-    - run: yarn test
+    - run: yarn test:coverage
 
     - name: Coveralls GitHub Action
       uses: coverallsapp/github-action@v1.1.2

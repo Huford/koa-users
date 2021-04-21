@@ -10,7 +10,8 @@
     "build:spec-and-routes": "tsoa spec-and-routes",
     "build": "rimraf ./build && tsoa spec-and-routes && tsc --project tsconfig.production.json && ncp static build/static",
     "start": "node build/src/server.js",
-    "test": "PORT=3001 jest --no-cache "
+    "test": "PORT=3001 jest --no-cache ",
+    "test:coverage": "yarn test --collectCoverage "
   },
   "dependencies": {
     "@koa/router": "^10.0.0",
