@@ -28,3 +28,6 @@ jobs:
     - run: yarn install --frozen-lockfile
     - run: yarn build:spec-and-routes
     - run: yarn test
+
+    - name: Coveralls GitHub Action
+      uses: coverallsapp/github-action@v1.1.2
