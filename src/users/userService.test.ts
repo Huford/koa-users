@@ -1,7 +1,6 @@
 import {
   NO_COORDINATES_ERROR_MSG,
   INCORRECT_RADIUS_VALUE_ERROR_MSG,
-  USER_NOT_FOUND_ERROR_MSG,
   INVALID_LAT_LNG_ERROR_MSG,
 } from './constants';
 import { singleUser, allUsers, gmailUsers, gmailUsersEmails } from './fixtures';
@@ -9,20 +8,7 @@ import { UsersService } from './usersService';
 
 describe('UserService Class', () => {
   const userService = new UsersService();
-  describe('getUserById method', () => {
-    it('should return one user', async () => {
-      const user = await userService.getUserById(3);
-      expect(user).toStrictEqual(singleUser);
-    });
-    it("should return 404 if the user doesn't exists", async () => {
-      try {
-        await userService.getUserById(50);
-      } catch (e) {
-        expect(e.statusCode).toBe(404);
-        expect(e.message).toBe(USER_NOT_FOUND_ERROR_MSG);
-      }
-    });
-  });
+
   describe('getUsers method', () => {
     it('should return all users', async () => {
       const user = await userService.getUsers({});

@@ -1,15 +1,9 @@
-import { Controller, Get, Path, Query, Route, Security } from 'tsoa';
+import { Controller, Get, Query, Route, Security } from 'tsoa';
 import { User } from './user';
 import { UsersService } from './usersService';
 
 @Route('users')
 export class UsersController extends Controller {
-  @Get('{userId}')
-  @Security('api_key')
-  public async getUser(@Path() userId: number): Promise<User | void> {
-    return await new UsersService().getUserById(userId);
-  }
-
   @Get()
   @Security('api_key')
   public async getUsers(
