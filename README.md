@@ -5,6 +5,8 @@ Example usage of a simple /users endpoint
 [![Deploy](https://github.com/Huford/koa-users/actions/workflows/main.yml/badge.svg)](https://github.com/Huford/koa-users/actions/workflows/main.yml)
 [![Coverage Status](https://coveralls.io/repos/github/Huford/koa-users/badge.svg?branch=main)](https://coveralls.io/github/Huford/koa-users?branch=main)
 
+https://koa-users.herokuapp.com/
+
 ## Features
 - TypeScript
 - [koa](https://koajs.com/)
